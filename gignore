@@ -22,9 +22,12 @@ else:
     with open(".gitignore", "a") as f:
         opts, args = getopt(sys.argv, "h")
 
-        for arg in args:
+        for arg in args[1:]:
             if arg in ignores:
                 f.write("\n# " + arg + "\n")
                 f.write(proc(ignores[arg]))
                 f.write("\n")
+            else:
+                print("Can't find pattern for " + arg)
+                print("Please suggest contributing to project. More info in README")
 
