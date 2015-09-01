@@ -1,0 +1,33 @@
+#!/usr/bin/python
+
+import sys
+from getopt import getopt
+
+def proc(arr):
+    return "\n".join(arr)
+
+ignores = {
+        "node": [ "node_modules", 
+            "logs", 
+            "npm-debug.log*", 
+            ".grunt", 
+            "coverage"],
+        "vim": [ "*~",
+            "*.swp"]
+}
+
+if len(sys.argv) == 1 or sys.argv[1] == "-h":
+    print("usage: gignore [filename]+")
+else:
+    with open(".gitignore", "a") as f:
+        opts, args = getopt(sys.argv, "h")
+
+        for arg in args[1:]:
+            if arg in ignores:
+                f.write("\n# " + arg + "\n")
+                f.write(proc(ignores[arg]))
+                f.write("\n")
+            else:
+                print("Can't find pattern for " + arg)
+                print("Please suggest contributing to project. More info in README")
+
