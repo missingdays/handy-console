@@ -7,74 +7,88 @@ def proc(arr):
     return "\n".join(arr)
 
 ignores = {
-        "node": [ "node_modules", 
-            "logs", 
-            "npm-debug.log*", 
-            ".grunt", 
-            "coverage"],
-        "vim": [ "*~",
-            "*.swp"],
-        "c": ["*.o",
-            "*.ko",
-            "*.obj",
-            "*.elf",
-            "*.gch",
-            "*.pch",
-            "*.lib",
-            "*.a",
-            "*.la",
-            "*.lo",
-            "*.dll",
-            "*.so",
-            "*.so.*",
-            "*.dylib",
-            "*.exe",
-            "*.out",
-            "*.app",
-            "*.i*486",
-            "*.x86_64",
-            "*.hex"
-            ],
-        "ruby": [ "*.gem",
-            "*.rbc",
-            "./config",
-            "/coverage/",
-            "/pkg/",
-            "/tmp/",
-            "/test/tmp",
-            ".dat*",
-            "build/",
-            "/doc/",
-            ".rvmrc"
-            ],
-        "rust": ["*.o",
-            "*.so",
-            "*.rlib",
-            "*.dll",
-            "*.exe",
-            "/target/"
-            ],
-        "python": ["__pycache__/",
-            "*.py[cod]",
-            "*$py.class",
-            "*.log",
-            "Python",
-            "env/",
-            "build/",
-            "develop-eggs/",
-            "dist/",
-            "downloads/",
-            "eggs/",
-            ".eggs/",
-            "lib/",
-            "lib64/",
-            "parts/",
-            "sdist/",
-            "var/",
-            "*.egg-info/",
-            "*.egg",
-            ".installed.cfg"
-            ]
+"node": """
+node_modules 
+logs 
+npm-debug.log*"
+.grunt"
+coverage"
+""",
+
+"vim": """
+*~
+*.swp"
+""",
+
+"c": """
+*.o
+*.ko
+*.obj
+*.elf
+*.gch
+*.pch
+*.lib
+*.a
+*.la
+*.lo
+*.dll
+*.so
+*.so.*
+*.dylib
+*.exe
+*.out
+*.app
+*.i*486
+*.x86_64
+*.hex
+""",
+
+"ruby": """
+*.gem
+*.rbc
+./config
+/coverage/
+/pkg/
+/tmp/
+/test/tmp
+.dat*
+build/
+/doc/
+.rvmrc
+""",
+
+"rust": """
+*.o
+*.so
+*.rlib
+*.dll
+*.exe
+/target
+""",
+
+"python": """
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+*.egg
+.installed.cfg
+"""
+
 }
 
 if len(sys.argv) == 1 or sys.argv[1] == "-h":
@@ -86,7 +100,7 @@ else:
         for arg in args[1:]:
             if arg in ignores:
                 f.write("\n# " + arg + "\n")
-                f.write(proc(ignores[arg]))
+                f.write(ignores[arg])
                 f.write("\n")
             else:
                 print("Can't find pattern for " + arg)
