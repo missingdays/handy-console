@@ -3,9 +3,6 @@
 import sys
 from getopt import getopt
 
-def proc(arr):
-    return "\n".join(arr)
-
 ignores = {
 "node": """
 node_modules 
