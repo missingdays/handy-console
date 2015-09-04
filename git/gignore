@@ -88,8 +88,23 @@ var/
 
 }
 
+def list_lang():
+    print("Available ignores listing: ")
+    for lang in ignores:
+        print("    " + lang)
+
+def usage():
+    print("""
+usage: gignore [flags]* [language]+
+flags:
+    -h to get help
+    -l to list all available ignores
+    """)
+
 if len(sys.argv) == 1 or sys.argv[1] == "-h":
-    print("usage: gignore [filename]+")
+    usage()
+elif sys.argv[1] == "-l":
+    list_lang()
 else:
     with open(".gitignore", "a") as f:
         opts, args = getopt(sys.argv, "h")
