@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import sys, getopt
-from subprocess import call
+from handy_utils import call
 out = "git log --all --pretty=oneline --abbrev-commit --graph --decorate".split()
 
 if len(sys.argv) != 1:

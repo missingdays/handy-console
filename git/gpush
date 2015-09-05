@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from subprocess import call
+from handy_utils import call
 
 out = "git push origin master".split()
 
