@@ -15,10 +15,17 @@ for filename in os.listdir(path):
     with open(path + "/"  + filename, 'r') as f:
         ignores[parse(filename)] = f.read()
 
-def list_lang():
+def list_lang(opts):
     print("Available ignores listing: ")
-    for lang in ignores:
-        print("    " + lang)
+    if opts:
+        for opt in opts:
+            if opt in ignores:
+                print("    " + opt + " is available")
+            else:
+                print("    " + opt + " is not available. Consider contibuting")
+    else:
+        for lang in ignores:
+            print("    " + lang)
 
 def usage():
     print("""
@@ -31,7 +38,7 @@ flags:
 if len(sys.argv) == 1 or sys.argv[1] == "-h":
     usage()
 elif sys.argv[1] == "-l":
-    list_lang()
+    list_lang(sys.argv[2:])
 else:
     with open(".gitignore", "a") as f:
         opts, args = getopt(sys.argv, "h")
