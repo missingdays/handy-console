@@ -2,91 +2,18 @@
 
 import sys
 from getopt import getopt
+import os
 
-ignores = {
-"node": """
-node_modules 
-logs 
-npm-debug.log*"
-.grunt"
-coverage"
-""",
+def parse(f):
+    s = f.split(".")
+    return s[0].lower()
 
-"vim": """
-*~
-*.swp"
-""",
+ignores = {}
+path = os.path.expanduser("~") + "/.handy-console/ignores"
 
-"c": """
-*.o
-*.ko
-*.obj
-*.elf
-*.gch
-*.pch
-*.lib
-*.a
-*.la
-*.lo
-*.dll
-*.so
-*.so.*
-*.dylib
-*.exe
-*.out
-*.app
-*.i*486
-*.x86_64
-*.hex
-""",
-
-"ruby": """
-*.gem
-*.rbc
-./config
-/coverage/
-/pkg/
-/tmp/
-/test/tmp
-.dat*
-build/
-/doc/
-.rvmrc
-""",
-
-"rust": """
-*.o
-*.so
-*.rlib
-*.dll
-*.exe
-/target
-""",
-
-"python": """
-__pycache__/
-*.py[cod]
-*$py.class
-*.log
-Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-*.egg
-.installed.cfg
-"""
-
-}
+for filename in os.listdir(path):
+    with open(path + "/"  + filename, 'r') as f:
+        ignores[parse(filename)] = f.read()
 
 def list_lang():
     print("Available ignores listing: ")
