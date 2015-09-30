@@ -15,6 +15,10 @@ rm -rf ~./handy-console/ignores/Global
 mkdir ~/.handy-console/bin
 cp ./src/**/*.py ~/.handy-console/bin
 
+mkdir ~/bin
+
+export PATH=$PATH:~/bin
+
 for f in ~/.handy-console/bin/*
 do
     echo $f
