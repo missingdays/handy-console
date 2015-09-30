@@ -2,7 +2,7 @@
 
 import sys
 
-import handy_utils as utils
+from handy_utils import call
 
 from getopt import getopt
 
@@ -18,4 +18,4 @@ elif len(sys.argv) == 3:
     out.append(sys.argv[1])
     out.append(sys.argv[2])
 
-utils.call(out)
+call(out)

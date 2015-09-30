@@ -15,3 +15,6 @@ import subprocess
 def call(out):
     print(" ".join(out))
     subprocess.call(out)
+
+if __name__ == "__main__":
+    print(":P")
