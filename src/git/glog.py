@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import sys, getopt
-from handy_utils import call, append_args
+from handy_utils import call
 out = "git log --all --pretty=oneline --abbrev-commit --graph --decorate".split()
 
 if len(sys.argv) != 1:
@@ -13,5 +13,5 @@ if len(sys.argv) != 1:
             out.append("--remotes")
         flags.pop(flag)    
 
-    out = append_args(out, flags)
+    out = out + flags
 call(out)

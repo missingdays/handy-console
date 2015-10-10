@@ -2,7 +2,7 @@
 
 import sys
 
-from handy_utils import call, append_args
+from handy_utils import call
 
 out = "git push".split()
 

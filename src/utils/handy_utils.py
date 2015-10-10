@@ -16,10 +16,5 @@ def call(out):
     print(" ".join(out))
     subprocess.call(out)
 
-def append_args(out, args):
-    for arg in args:
-        out.append(arg)
-    return out    
-
 if __name__ == "__main__":
     print(":P")
