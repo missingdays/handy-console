@@ -2,7 +2,7 @@
 
 import sys
 
-from handy_utils import call
+from handy_utils import call, append_args
 
 from getopt import getopt
 
