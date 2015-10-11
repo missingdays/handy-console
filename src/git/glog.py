@@ -5,13 +5,13 @@ from handy_utils import call
 out = "git log --all --pretty=oneline --abbrev-commit --graph --decorate".split()
 
 if len(sys.argv) != 1:
-    args, flags = getopt.getopt(sys.argv, "h")
 
-    for flag in flags:
+    for i in range(len(sys.argv)):
+        flag = sys.argv[i]
         if flag == "-l":
             out.append("--not")
             out.append("--remotes")
-        flags.pop(flag)    
+            sys.argv.pop(i)
 
-    out = out + flags
+    out = out + sys.argv[1:]
 call(out)
