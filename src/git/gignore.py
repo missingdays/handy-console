@@ -15,7 +15,7 @@ def list_lang(opts):
             if opt in ignores:
                 print("    " + opt + " is available")
             else:
-                print("    " + opt + " is not available. Consider contibuting")
+                print("    " + opt + " is not available. Consider contributing")
     else:
         for lang in ignores:
             print("    " + lang)
