@@ -8,7 +8,7 @@ def parse(f):
     s = f.split(".")
     return s[0].lower()
 
-def list_lang(opts):
+def list_lang(opts, ignores):
     print("Available ignores listing: ")
     if opts:
         for opt in opts:
@@ -43,12 +43,12 @@ def init_ignores():
     return ignores
 
 def main():
+    ignores = init_ignores()
     if len(sys.argv) == 1 or sys.argv[1] == "-h":
         usage()
     elif sys.argv[1] == "-l":
-        list_lang(sys.argv[2:])
+        list_lang(sys.argv[2:], ignores)
     else:
-        ignores = init_ignores()
         with open(".gitignore", "a") as f:
             opts, args = getopt(sys.argv, "h")
 
